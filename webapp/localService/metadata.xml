@@ -1,0 +1,479 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZHR_CBA_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="CBAUpdate" sap:content-version="1">
+				<Key><PropertyRef Name="ArticleId"/><PropertyRef Name="CbaId"/><PropertyRef Name="ItemNo"/></Key><Property Name="ArticleDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="CBA Article Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Notes" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Notes" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TypeId" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Type ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Item Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposedChange" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposed Change" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CBAHeader" sap:content-version="1">
+				<Key><PropertyRef Name="CbaId"/></Key><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"/><Property Name="EmplyId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Employer Id."/><Property Name="UnionId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Union Id"/><Property Name="EmplyName" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="CBA Employer Name"/><Property Name="UnionName" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="CBA Union Name"/><Property Name="CbaStartDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CBA Start Date"/><Property Name="CbaEndDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CBA End Date"/><Property Name="City" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="City"/><NavigationProperty Name="CBAArticleSet" Relationship="ZHR_CBA_SRV.CBA_Articles" FromRole="FromRole_CBA_Articles"
+					ToRole="ToRole_CBA_Articles"/><NavigationProperty Name="CBAAttchmentSet" Relationship="ZHR_CBA_SRV.CBA_Attachments" FromRole="FromRole_CBA_Attachments"
+					ToRole="ToRole_CBA_Attachments"/></EntityType>
+			<EntityType Name="CBAArticle" sap:content-version="1">
+				<Key><PropertyRef Name="CbaId"/><PropertyRef Name="ArticleId"/></Key><Property Name="ArticleDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="CBA Article Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"/><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"/><Property Name="ArticleStat" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="CBA Article Status"/><Property Name="SignedDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Article Signed Date"/><Property Name="UnionId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Union ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ClauseId" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="CBA Clause Id."/><Property Name="ArticleDetailedDescr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CBA Article Detailed Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposalSubmitDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false"
+					sap:label="CBA : Proposal Submit Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="HasClause" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Has Clauses/not"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToCBAUpdate" Relationship="ZHR_CBA_SRV.Assoc_CBAArticle_To_CBAUpdate"
+					FromRole="FromRole_Assoc_CBAArticle_To_CBAUpdate" ToRole="ToRole_Assoc_CBAArticle_To_CBAUpdate"/><NavigationProperty Name="CBAClauseSet" Relationship="ZHR_CBA_SRV.Article_Clauses" FromRole="FromRole_Article_Clauses"
+					ToRole="ToRole_Article_Clauses"/><NavigationProperty Name="ManArticleProposalsSet" Relationship="ZHR_CBA_SRV.ManArticle_Proposals" FromRole="FromRole_ManArticle_Proposals"
+					ToRole="ToRole_ManArticle_Proposals"/></EntityType>
+			<EntityType Name="CBAClause" sap:content-version="1">
+				<Key><PropertyRef Name="CbaId"/><PropertyRef Name="ArticleId"/><PropertyRef Name="ClauseId"/></Key><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"/><Property Name="ClauseDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Clause Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"/><Property Name="ClauseId" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="CBA Clause Id."/><Property Name="SubClauseId" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="CBA Sub Clause Id."/><Property Name="ClauseDetailedDescr" Type="Edm.String" sap:unicode="false" sap:label="Clause Content" sap:sortable="false"
+					sap:filterable="false"/><Property Name="SubClauseDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="SubClause Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubClauseDetailedDescr" Type="Edm.String" sap:unicode="false" sap:label="SubClause Detailed Description"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CBAAttchment" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="CbaId"/><PropertyRef Name="Documentid"/></Key><Property Name="FileSize" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="File Size" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Documentid" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Object ID"/><Property Name="Documentclass" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="DocuClass"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Component name"/><Property Name="MimeType" Type="Edm.String" MaxLength="128" sap:unicode="false" sap:label="MIME type"/><Property Name="CreatedBy" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Full Name"/><Property Name="CreatedAt" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp"/><Property Name="Url" Type="Edm.String" sap:unicode="false" sap:label="URL"/></EntityType>
+			<EntityType Name="PersonnelSerchHelp" sap:content-version="1">
+				<Key><PropertyRef Name="PersonnelArea"/><PropertyRef Name="SubArea"/></Key><Property Name="PersonnelArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SubAreaText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="EmployeeHelp1" sap:content-version="1">
+				<Key><PropertyRef Name="EmpNo"/></Key><Property Name="EmpNo" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Employee No" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="EmpName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Employee Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UnionCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Union Code" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UnionName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Union Text"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EmployeeType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Employee Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Manager" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Manager" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="File" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="FolderId"/></Key><Property Name="MemoNo" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Grievance No" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mime Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileSize" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="File Size" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Content" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ProposalAttachments" sap:content-version="1">
+				<Key><PropertyRef Name="ArticleId"/><PropertyRef Name="CbaId"/><PropertyRef Name="ItemNo"/><PropertyRef Name="FolderId"/></Key><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Item Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mime Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileSize" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="File Size" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Content" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CbaUpload" sap:content-version="1">
+				<Key><PropertyRef Name="ArticleId"/><PropertyRef Name="CbaId"/><PropertyRef Name="ClauseId"/><PropertyRef Name="SubClauseId"/></Key><Property Name="ArticleDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="CBA Article Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleDetailedDescr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Article Detailed Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"/><Property Name="CbaEndDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CBA End Date"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"/><Property Name="CbaStartDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CBA Start Date"/><Property Name="City" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="City"/><Property Name="ClauseDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Clause Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ClauseDetailedDescr" Type="Edm.String" sap:unicode="false" sap:label="Clause Content" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ClauseId" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="CBA Clause Id."/><Property Name="EmplyName" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="CBA Employer Name"/><Property Name="ProposalSubmitDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubClauseDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="SubClause Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubClauseDetailedDescr" Type="Edm.String" sap:unicode="false" sap:label="SubClause Detailed Description"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SubClauseId" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="SubClause Id"/><Property Name="UnionName" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="CBA Union Name"/><Property Name="UnionId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Union Id"/></EntityType>
+			<EntityType Name="PolicyAttachment" sap:content-version="1">
+				<Key><PropertyRef Name="PolicyId"/><PropertyRef Name="FolderId"/></Key><Property Name="PolicyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CBA Proposal Id."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mime Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileSize" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="File Size" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Content" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ManArticleProposals" sap:content-version="1">
+				<Key><PropertyRef Name="ProposalId"/></Key><Property Name="CityPosition" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal City Positi" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DefaultProposals" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Default Proposals Flag"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ClauseId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CBA Clause Id."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FinalStatus" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Proposal Final Status"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ClauseDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Clause Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposalSnapshot" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal Snapshot" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReasonForChange" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Reason for Change" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PropDecision" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal Decision" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposalId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CBA Proposal Id."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StatusTxt" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Proposal Status Text"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SeaPosition" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal SEA Positio" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="CBA Article Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="proposed by"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposedChange" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposed change" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Notes" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Notes" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="BringForward" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Negotiations"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Proposal change status"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TypeId" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Type ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ProposalStaus" sap:content-version="1">
+				<Key><PropertyRef Name="StatusKey"/></Key><Property Name="StatusKey" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false"
+					sap:label="CBA Article Proposal change status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StatusTxt" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Short Descript."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Identifier" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PolicyReview" sap:content-version="1">
+				<Key><PropertyRef Name="ProposalId"/></Key><Property Name="ProposalId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CBA Proposal Id."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleDescr" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="CBA Article Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="proposed by"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProposedChange" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposed change" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Notes" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Notes" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="BringForward" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Negotiations"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CBA Article Proposal change status"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StatusTxt" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Proposal Status Text"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CityPosition" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal City Positi" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SeaPosition" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal SEA Positio" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PropDecision" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Proposal Decision" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PolicyHeader" sap:content-version="1">
+				<Key><PropertyRef Name="PolicyId"/></Key><Property Name="PolicyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Policy Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PolicyName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Policy Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PolicyOwner" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Policy Owner"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ApprovedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="ApprovedBy"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EffectiveDate" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Effective Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Purpose" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Purpose" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Definition" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Definition" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Scope" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Scope" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PolicyOwnerName" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Policy Owner Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ApproverName" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Approver Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PersonnelArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Personnel Area"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Union Code" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubAreaText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Union Text"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToPolicyItems" Relationship="ZHR_CBA_SRV.Assoc_PolicyHeader_To_PolicyItems"
+					FromRole="FromRole_Assoc_PolicyHeader_To_PolicyItems" ToRole="ToRole_Assoc_PolicyHeader_To_PolicyItems"/><NavigationProperty Name="ToPolicyAttachments" Relationship="ZHR_CBA_SRV.Assoc_PolicyHeader_To_PolicyAttachments"
+					FromRole="FromRole_Assoc_PolicyHeader_To_PolicyAttachments" ToRole="ToRole_Assoc_PolicyHeader_To_PolicyAttachments"/></EntityType>
+			<EntityType Name="PolicyItems" sap:content-version="1">
+				<Key><PropertyRef Name="PolicyId"/><PropertyRef Name="PolicyItemId"/></Key><Property Name="PolicyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Policy Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PolicyItem" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Policy Item" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PolicyDetails" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Policy Details" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PolicyItemId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Policy Item Id"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Section" sap:content-version="1">
+				<Key><PropertyRef Name="CbaId"/><PropertyRef Name="ClauseID"/></Key><Property Name="ArticleID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CBA Article Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CbaId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Collective Bargaining Agreement Id"/><Property Name="ClauseID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CBA Clause Id." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ClauseDesc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Clause Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="EmployeeHelp" sap:content-version="1">
+				<Key><PropertyRef Name="EmpNo"/></Key><Property Name="EmpNo" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Employee No" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="EmpName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Employee Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Department" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Department"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Address" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Address" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Province" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Province" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PostCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Post Code" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessPhone" Type="Edm.String" Nullable="false" MaxLength="14" sap:unicode="false" sap:label="Business Phone"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Moibile" Type="Edm.String" Nullable="false" MaxLength="14" sap:unicode="false" sap:label="Mobile" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Email" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Position" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Position" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PositionName" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Short Text of Position"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PersonnelArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ManagerName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Manager Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Manager" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Manager Pernr"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="TimeLimit" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UnionID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="GrievLevel" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DaysNo" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="HRAdvisor" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Personnel" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/><PropertyRef Name="PersonnelArea"/><PropertyRef Name="SubArea"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PersonnelArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SubAreaText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NonUnion" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Admin" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToAgents" Relationship="ZHR_CBA_SRV.NavToAgent" FromRole="FromRole_NavToAgent" ToRole="ToRole_NavToAgent"/><NavigationProperty Name="ToHrAdvisor" Relationship="ZHR_CBA_SRV.NavToHRAdvisor" FromRole="FromRole_NavToHRAdvisor"
+					ToRole="ToRole_NavToHRAdvisor"/><NavigationProperty Name="ToUnion" Relationship="ZHR_CBA_SRV.NavToPersonnel" FromRole="FromRole_NavToPersonnel"
+					ToRole="ToRole_NavToPersonnel"/><NavigationProperty Name="ToTimeLimits" Relationship="ZHR_CBA_SRV.NavToTimeLimit" FromRole="FromRole_NavToTimeLimit"
+					ToRole="ToRole_NavToTimeLimit"/><NavigationProperty Name="ToEmployer" Relationship="ZHR_CBA_SRV.NavToEmployer" FromRole="FromRole_NavToEmployer"
+					ToRole="ToRole_NavToEmployer"/><NavigationProperty Name="ToArbitrators" Relationship="ZHR_CBA_SRV.NavToArbitrators" FromRole="FromRole_NavToArbitrators"
+					ToRole="ToRole_NavToArbitrators"/><NavigationProperty Name="ToBargainingCommittee" Relationship="ZHR_CBA_SRV.Assoc_Admin_To_BargainingCommittee"
+					FromRole="FromRole_Assoc_Admin_To_BargainingCommittee" ToRole="ToRole_Assoc_Admin_To_BargainingCommittee"/><NavigationProperty Name="ToResolutionType" Relationship="ZHR_CBA_SRV.NavToResolutionType" FromRole="FromRole_NavToResolutionType"
+					ToRole="ToRole_NavToResolutionType"/><NavigationProperty Name="ToDynamicContent" Relationship="ZHR_CBA_SRV.NavToDynaicContent" FromRole="FromRole_NavToDynaicContent"
+					ToRole="ToRole_NavToDynaicContent"/><NavigationProperty Name="ToAgentDetermination" Relationship="ZHR_CBA_SRV.NavToAgentDetermination"
+					FromRole="FromRole_NavToAgentDetermination" ToRole="ToRole_NavToAgentDetermination"/></EntityType>
+			<EntityType Name="AgentMaintenance" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AgentType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Agent" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Employer" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="EmployerName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CompanyLogo" sap:content-version="1">
+				<Key><PropertyRef Name="FolderId"/></Key><Property Name="ImageType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Image Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mime Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileSize" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="File Size" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Content" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AttachType" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="AttachType"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Arbitrators" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Arbitrator" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BargainingCommittee" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Btext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PersonnelSerchHelp" sap:content-version="1">
+				<Key><PropertyRef Name="PersonnelArea"/></Key><Property Name="PersonnelArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SubArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SubAreaText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="HRAdvisorSearchHelp" sap:content-version="1">
+				<Key><PropertyRef Name="UserId"/><PropertyRef Name="UserName"/></Key><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ResolutionType" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="IndexNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CreatedOn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ChangedOn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="DynamicContent" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/><PropertyRef Name="LevelType"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="LevelType" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Content" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="AgentDetermination" sap:content-version="1">
+				<Key><PropertyRef Name="AdminKey"/></Key><Property Name="AdminKey" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Agent" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="File" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="FolderId"/></Key><Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mime Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="File Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileSize" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="File Size" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Content" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FolderId" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Folder Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImageType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Image Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Position" sap:content-version="1">
+				<Key><PropertyRef Name="Plans"/></Key><Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ArbitratorSearchHelp" sap:content-version="1">
+				<Key><PropertyRef Name="Pernr"/><PropertyRef Name="UserId"/></Key><Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plstx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<ComplexType Name="ActionResult"><Property Name="ActionSuccessful" Type="Edm.Boolean" Nullable="false" sap:label="X Flag" sap:creatable="false" sap:updatable="false"
+				sap:sortable="false" sap:filterable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" sap:label="String" sap:creatable="false" sap:updatable="false"
+				sap:sortable="false" sap:filterable="false"/></ComplexType>
+			<Association Name="CBA_Articles" sap:content-version="1"><End Type="ZHR_CBA_SRV.CBAHeader" Multiplicity="1" Role="FromRole_CBA_Articles"/><End Type="ZHR_CBA_SRV.CBAArticle" Multiplicity="*" Role="ToRole_CBA_Articles"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_CBA_Articles"><PropertyRef Name="CbaId"/></Principal>
+					<Dependent Role="ToRole_CBA_Articles"><PropertyRef Name="CbaId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="CBA_Attachments" sap:content-version="1"><End Type="ZHR_CBA_SRV.CBAHeader" Multiplicity="1" Role="FromRole_CBA_Attachments"/><End Type="ZHR_CBA_SRV.CBAAttchment" Multiplicity="*" Role="ToRole_CBA_Attachments"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_CBA_Attachments"><PropertyRef Name="CbaId"/></Principal>
+					<Dependent Role="ToRole_CBA_Attachments"><PropertyRef Name="CbaId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_PolicyHeader_To_PolicyItems" sap:content-version="1"><End Type="ZHR_CBA_SRV.PolicyHeader" Multiplicity="*" Role="FromRole_Assoc_PolicyHeader_To_PolicyItems"/><End Type="ZHR_CBA_SRV.PolicyItems" Multiplicity="*" Role="ToRole_Assoc_PolicyHeader_To_PolicyItems"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_PolicyHeader_To_PolicyItems"><PropertyRef Name="PolicyId"/></Principal>
+					<Dependent Role="ToRole_Assoc_PolicyHeader_To_PolicyItems"><PropertyRef Name="PolicyId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_PolicyHeader_To_PolicyAttachments" sap:content-version="1"><End Type="ZHR_CBA_SRV.PolicyHeader" Multiplicity="1" Role="FromRole_Assoc_PolicyHeader_To_PolicyAttachments"/><End Type="ZHR_CBA_SRV.PolicyAttachment" Multiplicity="*" Role="ToRole_Assoc_PolicyHeader_To_PolicyAttachments"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_PolicyHeader_To_PolicyAttachments"><PropertyRef Name="PolicyId"/></Principal>
+					<Dependent Role="ToRole_Assoc_PolicyHeader_To_PolicyAttachments"><PropertyRef Name="PolicyId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Article_Clauses" sap:content-version="1"><End Type="ZHR_CBA_SRV.CBAArticle" Multiplicity="1" Role="FromRole_Article_Clauses"/><End Type="ZHR_CBA_SRV.CBAClause" Multiplicity="*" Role="ToRole_Article_Clauses"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Article_Clauses"><PropertyRef Name="CbaId"/><PropertyRef Name="ArticleId"/></Principal>
+					<Dependent Role="ToRole_Article_Clauses"><PropertyRef Name="CbaId"/><PropertyRef Name="ArticleId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ManArticle_Proposals" sap:content-version="1"><End Type="ZHR_CBA_SRV.CBAArticle" Multiplicity="1" Role="FromRole_ManArticle_Proposals"/><End Type="ZHR_CBA_SRV.ManArticleProposals" Multiplicity="*" Role="ToRole_ManArticle_Proposals"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ManArticle_Proposals"><PropertyRef Name="CbaId"/><PropertyRef Name="ArticleId"/></Principal>
+					<Dependent Role="ToRole_ManArticle_Proposals"><PropertyRef Name="CbaId"/><PropertyRef Name="ArticleId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_CBAArticle_To_CBAUpdate" sap:content-version="1"><End Type="ZHR_CBA_SRV.CBAArticle" Multiplicity="0..1" Role="FromRole_Assoc_CBAArticle_To_CBAUpdate"/><End Type="ZHR_CBA_SRV.CBAUpdate" Multiplicity="*" Role="ToRole_Assoc_CBAArticle_To_CBAUpdate"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_CBAArticle_To_CBAUpdate"><PropertyRef Name="ArticleId"/><PropertyRef Name="CbaId"/></Principal>
+					<Dependent Role="ToRole_Assoc_CBAArticle_To_CBAUpdate"><PropertyRef Name="ArticleId"/><PropertyRef Name="CbaId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToHRAdvisor" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToHRAdvisor"/><End Type="ZHR_CBA_SRV.HRAdvisor" Multiplicity="*" Role="ToRole_NavToHRAdvisor"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToHRAdvisor"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToHRAdvisor"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToPersonnel" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToPersonnel"/><End Type="ZHR_CBA_SRV.Personnel" Multiplicity="*" Role="ToRole_NavToPersonnel"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToPersonnel"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToPersonnel"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToTimeLimit" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToTimeLimit"/><End Type="ZHR_CBA_SRV.TimeLimit" Multiplicity="*" Role="ToRole_NavToTimeLimit"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToTimeLimit"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToTimeLimit"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToEmployer" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToEmployer"/><End Type="ZHR_CBA_SRV.Employer" Multiplicity="*" Role="ToRole_NavToEmployer"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToEmployer"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToEmployer"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToArbitrators" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="*" Role="FromRole_NavToArbitrators"/><End Type="ZHR_CBA_SRV.Arbitrators" Multiplicity="*" Role="ToRole_NavToArbitrators"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToArbitrators"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToArbitrators"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Admin_To_BargainingCommittee" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="0..1" Role="FromRole_Assoc_Admin_To_BargainingCommittee"/><End Type="ZHR_CBA_SRV.BargainingCommittee" Multiplicity="*" Role="ToRole_Assoc_Admin_To_BargainingCommittee"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Admin_To_BargainingCommittee"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_Assoc_Admin_To_BargainingCommittee"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToResolutionType" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToResolutionType"/><End Type="ZHR_CBA_SRV.ResolutionType" Multiplicity="*" Role="ToRole_NavToResolutionType"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToResolutionType"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToResolutionType"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToDynaicContent" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToDynaicContent"/><End Type="ZHR_CBA_SRV.DynamicContent" Multiplicity="*" Role="ToRole_NavToDynaicContent"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToDynaicContent"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToDynaicContent"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToAgentDetermination" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToAgentDetermination"/><End Type="ZHR_CBA_SRV.AgentDetermination" Multiplicity="*" Role="ToRole_NavToAgentDetermination"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToAgentDetermination"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToAgentDetermination"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NavToAgent" sap:content-version="1"><End Type="ZHR_CBA_SRV.Admin" Multiplicity="1" Role="FromRole_NavToAgent"/><End Type="ZHR_CBA_SRV.AgentMaintenance" Multiplicity="*" Role="ToRole_NavToAgent"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NavToAgent"><PropertyRef Name="AdminKey"/></Principal>
+					<Dependent Role="ToRole_NavToAgent"><PropertyRef Name="AdminKey"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZHR_CBA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="CBAUpdateSet" EntityType="ZHR_CBA_SRV.CBAUpdate" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CBAHeaderSet" EntityType="ZHR_CBA_SRV.CBAHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="CBAArticleSet" EntityType="ZHR_CBA_SRV.CBAArticle" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="CBAClauseSet" EntityType="ZHR_CBA_SRV.CBAClause" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="CBAAttchmentSet" EntityType="ZHR_CBA_SRV.CBAAttchment" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="PersonnelSerchHelpSet" EntityType="ZHR_CBA_SRV.PersonnelSerchHelp" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="EmployeeHelp1Set" EntityType="ZHR_CBA_SRV.EmployeeHelp1" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="FileSet" EntityType="ZHR_CBA_SRV.File" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ProposalAttachmentsSet" EntityType="ZHR_CBA_SRV.ProposalAttachments" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CbaUploadSet" EntityType="ZHR_CBA_SRV.CbaUpload" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="PolicyAttachmentSet" EntityType="ZHR_CBA_SRV.PolicyAttachment" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ManArticleProposalsSet" EntityType="ZHR_CBA_SRV.ManArticleProposals" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ProposalStausSet" EntityType="ZHR_CBA_SRV.ProposalStaus" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="PolicyReviewSet" EntityType="ZHR_CBA_SRV.PolicyReview" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="PolicyHeaderSet" EntityType="ZHR_CBA_SRV.PolicyHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="PolicyItemsSet" EntityType="ZHR_CBA_SRV.PolicyItems" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="SectionSet" EntityType="ZHR_CBA_SRV.Section" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="EmployeeHelpSet" EntityType="ZHR_CBA_SRV.EmployeeHelp" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="TimeLimitSet" EntityType="ZHR_CBA_SRV.TimeLimit" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="HRAdvisorSet" EntityType="ZHR_CBA_SRV.HRAdvisor" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PersonnelSet" EntityType="ZHR_CBA_SRV.Personnel" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="AdminSet" EntityType="ZHR_CBA_SRV.Admin" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="AgentMaintenanceSet" EntityType="ZHR_CBA_SRV.AgentMaintenance" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="EmployerSet" EntityType="ZHR_CBA_SRV.Employer" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CompanyLogoSet" EntityType="ZHR_CBA_SRV.CompanyLogo" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ArbitratorsSet" EntityType="ZHR_CBA_SRV.Arbitrators" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="BargainingCommitteeSet" EntityType="ZHR_CBA_SRV.BargainingCommittee" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PersonnelSerchHelpSet" EntityType="ZHR_CBA_SRV.PersonnelSerchHelp" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="HRAdvisorSearchHelpSet" EntityType="ZHR_CBA_SRV.HRAdvisorSearchHelp" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ResolutionTypeSet" EntityType="ZHR_CBA_SRV.ResolutionType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="DynamicContentSet" EntityType="ZHR_CBA_SRV.DynamicContent" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="AgentDeterminationSet" EntityType="ZHR_CBA_SRV.AgentDetermination" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="FileSet" EntityType="ZHR_CBA_SRV.File" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PositionSet" EntityType="ZHR_CBA_SRV.Position" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ArbitratorSearchHelpSet" EntityType="ZHR_CBA_SRV.ArbitratorSearchHelp" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="Article_ClausesSet" Association="ZHR_CBA_SRV.Article_Clauses" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="CBAArticleSet" Role="FromRole_Article_Clauses"/><End EntitySet="CBAClauseSet" Role="ToRole_Article_Clauses"/></AssociationSet>
+				<AssociationSet Name="CBA_ArticlesSet" Association="ZHR_CBA_SRV.CBA_Articles" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="CBAHeaderSet" Role="FromRole_CBA_Articles"/><End EntitySet="CBAArticleSet" Role="ToRole_CBA_Articles"/></AssociationSet>
+				<AssociationSet Name="CBA_AttachmentsSet" Association="ZHR_CBA_SRV.CBA_Attachments" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="CBAHeaderSet" Role="FromRole_CBA_Attachments"/><End EntitySet="CBAAttchmentSet" Role="ToRole_CBA_Attachments"/></AssociationSet>
+				<AssociationSet Name="Assoc_CBAArticle_To_CBAUpdateSet" Association="ZHR_CBA_SRV.Assoc_CBAArticle_To_CBAUpdate" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="CBAArticleSet" Role="FromRole_Assoc_CBAArticle_To_CBAUpdate"/><End EntitySet="CBAUpdateSet" Role="ToRole_Assoc_CBAArticle_To_CBAUpdate"/></AssociationSet>
+				<AssociationSet Name="ManArticle_ProposalsSet" Association="ZHR_CBA_SRV.ManArticle_Proposals" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="CBAArticleSet" Role="FromRole_ManArticle_Proposals"/><End EntitySet="ManArticleProposalsSet" Role="ToRole_ManArticle_Proposals"/></AssociationSet>
+				<AssociationSet Name="Assoc_PolicyHeader_To_PolicyItemsSet" Association="ZHR_CBA_SRV.Assoc_PolicyHeader_To_PolicyItems"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="PolicyHeaderSet" Role="FromRole_Assoc_PolicyHeader_To_PolicyItems"/><End EntitySet="PolicyItemsSet" Role="ToRole_Assoc_PolicyHeader_To_PolicyItems"/></AssociationSet>
+				<AssociationSet Name="Assoc_PolicyHeader_To_PolicyAttachmenSet" Association="ZHR_CBA_SRV.Assoc_PolicyHeader_To_PolicyAttachments"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="PolicyHeaderSet" Role="FromRole_Assoc_PolicyHeader_To_PolicyAttachments"/><End EntitySet="PolicyAttachmentSet" Role="ToRole_Assoc_PolicyHeader_To_PolicyAttachments"/></AssociationSet>
+				<AssociationSet Name="NavToArbitratorsSet" Association="ZHR_CBA_SRV.NavToArbitrators" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToArbitrators"/><End EntitySet="ArbitratorsSet" Role="ToRole_NavToArbitrators"/></AssociationSet>
+				<AssociationSet Name="NavToAgentSet" Association="ZHR_CBA_SRV.NavToAgent" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToAgent"/><End EntitySet="AgentMaintenanceSet" Role="ToRole_NavToAgent"/></AssociationSet>
+				<AssociationSet Name="NavToHRAdvisorSet" Association="ZHR_CBA_SRV.NavToHRAdvisor" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToHRAdvisor"/><End EntitySet="HRAdvisorSet" Role="ToRole_NavToHRAdvisor"/></AssociationSet>
+				<AssociationSet Name="Assoc_Admin_To_BargainingCommitteeSet" Association="ZHR_CBA_SRV.Assoc_Admin_To_BargainingCommittee"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_Assoc_Admin_To_BargainingCommittee"/><End EntitySet="BargainingCommitteeSet" Role="ToRole_Assoc_Admin_To_BargainingCommittee"/></AssociationSet>
+				<AssociationSet Name="NavToDynaicContentSet" Association="ZHR_CBA_SRV.NavToDynaicContent" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToDynaicContent"/><End EntitySet="DynamicContentSet" Role="ToRole_NavToDynaicContent"/></AssociationSet>
+				<AssociationSet Name="NavToPersonnelSet" Association="ZHR_CBA_SRV.NavToPersonnel" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToPersonnel"/><End EntitySet="PersonnelSet" Role="ToRole_NavToPersonnel"/></AssociationSet>
+				<AssociationSet Name="NavToTimeLimitSet" Association="ZHR_CBA_SRV.NavToTimeLimit" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToTimeLimit"/><End EntitySet="TimeLimitSet" Role="ToRole_NavToTimeLimit"/></AssociationSet>
+				<AssociationSet Name="NavToResolutionTypeSet" Association="ZHR_CBA_SRV.NavToResolutionType" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToResolutionType"/><End EntitySet="ResolutionTypeSet" Role="ToRole_NavToResolutionType"/></AssociationSet>
+				<AssociationSet Name="NavToEmployerSet" Association="ZHR_CBA_SRV.NavToEmployer" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToEmployer"/><End EntitySet="EmployerSet" Role="ToRole_NavToEmployer"/></AssociationSet>
+				<AssociationSet Name="NavToAgentDeterminationSet" Association="ZHR_CBA_SRV.NavToAgentDetermination" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="AdminSet" Role="FromRole_NavToAgentDetermination"/><End EntitySet="AgentDeterminationSet" Role="ToRole_NavToAgentDetermination"/></AssociationSet>
+				<FunctionImport Name="ManagePolicyReview" ReturnType="ZHR_CBA_SRV.ActionResult" m:HttpMethod="GET"><Parameter Name="ProposalId" Type="Edm.String" Mode="In" MaxLength="10"/><Parameter Name="IsAccepted" Type="Edm.String" Mode="In" MaxLength="1"/></FunctionImport>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://virtual.dfi.gw:55443/sap/opu/odata/sap/ZHR_CBA_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://virtual.dfi.gw:55443/sap/opu/odata/sap/ZHR_CBA_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

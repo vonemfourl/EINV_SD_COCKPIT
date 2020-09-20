@@ -1,0 +1,146 @@
+<mvc:View controllerName="com.einv.sd.cockpit.controller.Cockpit" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar" xmlns:table="sap.ui.table">
+	<f:DynamicPage id="dynamicPageId" headerExpanded="true">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title id="_IDEGen_title0" text="India Cockpit - Documents" level="H2"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<fb:FilterBar id="filterbar" clear="onClearFilters" search="onSearch" useToolbar="false" showGoOnFB="true" showRestoreButton="true"
+						showClearButton="true">
+						<fb:filterItems>
+							<fb:FilterItem id="_IDEGen_filteritem0" name="CompanyCode" label="{/#InvoicingProcess/CompanyCode/@sap:label}">
+								<fb:control>
+									<MultiInput id="CompanyCode" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem1" name="BusinessPlace" label="{/#InvoicingProcess/BusinessPlace/@sap:label}">
+								<fb:control>
+									<MultiInput id="BusinessPlace" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem2" name="SupplierGSTIN" label="{/#InvoicingProcess/SupplierGSTIN/@sap:label}">
+								<fb:control>
+									<MultiInput id="SupplierGSTIN" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem3" name="DocumentNumber" label="{/#InvoicingProcess/DocumentNumber/@sap:label}">
+								<fb:control>
+									<MultiInput id="DocumentNumber" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem4" name="DocumentStatus" label="{/#InvoicingProcess/DocumentStatus/@sap:label}">
+								<fb:control>
+									<MultiInput id="DocumentStatus" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem5" name="CreatedBy" label="{/#InvoicingProcess/CreatedBy/@sap:label}">
+								<fb:control>
+									<MultiInput id="CreatedBy" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem6" name="CreatedOn" label="{/#InvoicingProcess/CreatedOn/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="CreatedOn" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem7" name="Time" label="{/#InvoicingProcess/Time/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="Time" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem8" name="InvoiceType" label="{/#InvoicingProcess/InvoiceType/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="InvoiceType" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem9" name="Receiver" label="{/#InvoicingProcess/Receiver/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="Receiver" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem10" name="ReceiverGSTIN" label="{/#InvoicingProcess/ReceiverGSTIN/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="ReceiverGSTIN" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem11" name="OrderNumber" label="{/#InvoicingProcess/OrderNumber/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="OrderNumber" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem12" name="DeliveryNumber" label="{/#InvoicingProcess/DeliveryNumber/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="DeliveryNumber" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem13" name="InvoiceNumber" label="{/#InvoicingProcess/InvoiceNumber/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="InvoiceNumber" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem14" name="BillingDate" label="{/#InvoicingProcess/BillingDate/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="BillingDate" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem15" name="BillingType" label="{/#InvoicingProcess/BillingType/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="BillingType" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem16" name="Province" label="{/#InvoicingProcess/Province/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="Province" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem17" name="Period" label="{/#InvoicingProcess/Period/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<MultiInput id="Period" showValueHelp="false"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem18" name="DeletedDocs" label="{/#InvoicingProcess/DeletedDocs/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<CheckBox id="DeletedDocs" />
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDEGen_filteritem19" name="ArchivedDocs" label="{/#InvoicingProcess/ArchivedDocs/@sap:label}" visibleInFilterBar="false">
+								<fb:control>
+									<CheckBox id="ArchivedDocs" />
+								</fb:control>
+							</fb:FilterItem>
+						</fb:filterItems>
+					</fb:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<table:Table id="table" selectionMode="MultiSelect" columnVisibility="onShowHideColumn" showColumnVisibilityMenu="true" busyIndicatorDelay="0"
+				enableGrouping="false" visibleRowCount="{cockpitView>/iShowRows}" enableCellFilter="false" ariaLabelledBy="title" class="alternate-color">
+				<table:extension>
+					<OverflowToolbar id="_IDEGen_overflowtoolbar0" class="toolbar">
+						<Title id="_IDEGen_title1" text="{page>/tableTitle}"/>
+						<ToolbarSpacer id="_IDEGen_toolbarspacer0"/>
+						<Button id="_IDEGen_button0" text="Send to GST" type="Reject" press="onPressShowSettings" />
+						<Button id="_IDEGen_button1" text="Get E-Invoice Details" type="Reject" press="onPressShowSettings" />
+						<Button id="_IDEGen_button2" text="Delete" type="Reject" press="onPressShowSettings" />
+						<Button id="_IDEGen_button3" text="Cancel IRN" type="Reject" press="onPressShowSettings" />
+						<Button id="_IDEGen_button4" text="Display HTML" type="Reject" press="onPressShowSettings" />
+						<Button id="_IDEGen_button5" text="Download HTML" type="Reject" press="onPressShowSettings" />
+						<!--<ToolbarSeparator id="_IDEGen_toolbarseparator0"/>-->
+						<!--<Button id="_IDEGen_button0" visible="false" icon="sap-icon://settings" type="Transparent" tooltip="Settings" press="onPressShowSettings"-->
+						<!--	busyIndicatorDelay="0"/>-->
+					</OverflowToolbar>
+				</table:extension>
+			</table:Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
