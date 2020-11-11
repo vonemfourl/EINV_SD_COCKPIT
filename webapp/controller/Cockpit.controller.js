@@ -7,8 +7,8 @@ sap.ui.define([
 ], function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
 	"use strict";
 	var that = this;
-
-	return BaseController.extend("com.einv.sd.cockpit.controller.Cockpit", {
+	
+	return BaseController.extend("com.einv.sd.process.controller.Cockpit", {
 
 		formatter: formatter,
 
@@ -35,13 +35,14 @@ sap.ui.define([
 			iOriginalBusyDelay = oTable.getBusyIndicatorDelay();
 			// keeps the search state
 			this._aTableSearchState = [];
-			
+
 			var iShowRows = 10,
 				iHeight = sap.ui.Device.resize.height;
-			
+
 			if (iHeight < 650) {
 				iShowRows = 7;
-			} if (iHeight > 650 && iHeight < 750) {
+			}
+			if (iHeight > 650 && iHeight < 750) {
 				iShowRows = 9;
 			} else if (iHeight > 750 && iHeight < 850) {
 				iShowRows = 12;
@@ -51,8 +52,7 @@ sap.ui.define([
 				iShowRows = 17;
 			} else if (iHeight > 1050) {
 				iShowRows = 20;
-			} 
-			
+			}
 
 			// Model used to manipulate control states
 			oViewModel = new JSONModel({
@@ -98,7 +98,7 @@ sap.ui.define([
 			var oFilterBar = oEvent.getSource();
 			var aFilterItems = oFilterBar.getFilterItems();
 			var aFilters = [];
-			
+
 			for (var oFil in aFilterItems) {
 				if (aFilterItems[oFil].getVisibleInFilterBar()) {
 					var sFilterName = aFilterItems[oFil].getName();
@@ -271,17 +271,53 @@ sap.ui.define([
 
 					oTable.removeAllColumns();
 
+					var aDates = ["BillingDate", "CreatedOn"],
+						aTimes = ["EntryTime", "Time", "IRNCancellationTim"];
+					var sText = oProp,
+						oLabel;
+
 					for (oProp in oTableObj) {
+						if (aDates.indexOf(oProp) > -1) {
+							/*sText = {
+								path: '/' + oProp,
+								formatter: 'sap.ui.model.type.Date',
+								formatOptions: {
+									pattern: 'yyyy/MM/dd'
+								}
+							};*/
+							oLabel = new sap.m.Label({
+								
+								text: "{path: '/" + oProp + "', formatter: 'sap.ui.model.type.Date',formatOptions: {pattern: 'yyyy/MM/dd'}}"
+							});
+						} else if (aTimes.indexOf(oProp) > -1) {
+							/*sText = {
+								path: "/" + oProp + '/ms',
+								type: 'sap.ui.model.type.Time',
+								formatOptions: {
+									source: {
+										pattern: '\'PT\'hh\'H\'mm\'M\'ss\'S\''
+									},
+									pattern: 'HH:mm:ss'
+								}
+							};*/
+							
+							
+
+							oLabel = new sap.m.Label({
+								text: "{path:'/" + oProp + "', formatter: '._formatTime'}"
+							});
+						} else {
+							oLabel = new sap.m.Label({
+								text: "{" + oProp + "}"
+							});
+						}
+
 						oTable.addColumn(new sap.ui.table.Column({
 							width: Object.keys(oTableObj).length > 10 ? "8rem" : "auto",
-							// filterProperty: oProp,
-							// sortProperty: oProp,
 							label: new sap.m.Label({
 								text: oTableObj[oProp]
 							}),
-							template: new sap.m.Label({
-								text: "{" + oProp + "}"
-							})
+							template: oLabel
 						}));
 					}
 
@@ -291,7 +327,29 @@ sap.ui.define([
 				}
 			});
 		},
-
+		
+		_formatTime: function(val) {
+			if (val) {
+			    val = val.replace(/^PT/, '').replace(/S$/, '');
+			    val = val.replace('H', ':').replace('M', ':');
+			
+			    var multipler = 60 * 60;
+			    var result = 0;
+			    val.split(':').forEach(function(token) {
+			      result += token * multipler;
+			      multipler = multipler/ 60;
+			    });
+			    var timeinmiliseconds = result * 1000;
+			
+			    var timeFormat = sap.ui.core.format.DateFormat.getTimeInstance({
+			      pattern: "HH:mm:ss a"
+			    });
+			    var TZOffsetMs = new Date(0).getTimezoneOffset() * 60 * 1000;
+			    return timeFormat.format(new Date(timeinmiliseconds + TZOffsetMs));
+			  }
+			  return null;
+		},
+		
 		_fnMultiInputAddValidator: function () {
 			var oView = that.getView();
 			var aValidator = [
@@ -299,18 +357,17 @@ sap.ui.define([
 				"Time", "InvoiceType", "Receiver", "ReceiverGSTIN", "OrderNumber", "DeliveryNumber", "InvoiceNumber", "BillingDate",
 				"BillingType", "Province", "Period"
 			];
-			
-			
+
 			for (var oValidator in aValidator) {
 				var fnValidator = function (args) {
 					var text = args.text;
-				
+
 					return new sap.m.Token({
 						key: text,
 						text: text
 					});
 				};
-				
+
 				oView.byId(aValidator[oValidator]).addValidator(fnValidator);
 			}
 		}

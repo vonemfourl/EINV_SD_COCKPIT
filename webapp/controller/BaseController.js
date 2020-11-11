@@ -8,7 +8,7 @@ sap.ui.define([
 	// shortcut for sap.m.URLHelper
 	var URLHelper = mobileLibrary.URLHelper;
 
-	return Controller.extend("com.einv.sd.cockpit.controller.BaseController", {
+	return Controller.extend("com.einv.sd.process.controller.BaseController", {
 		/**
 		 * Convenience method for accessing the router.
 		 * @public

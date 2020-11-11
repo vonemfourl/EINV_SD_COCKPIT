@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.einv.sd.cockpit.controller.Cockpit" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+<mvc:View controllerName="com.einv.sd.process.controller.Cockpit" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
 	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar" xmlns:table="sap.ui.table">
 	<f:DynamicPage id="dynamicPageId" headerExpanded="true">
 		<!-- DynamicPage Title -->
@@ -129,14 +129,14 @@
 					<OverflowToolbar id="_IDEGen_overflowtoolbar0" class="toolbar">
 						<Title id="_IDEGen_title1" text="{page>/tableTitle}"/>
 						<ToolbarSpacer id="_IDEGen_toolbarspacer0"/>
-						<Button id="_IDEGen_button0" text="Send to GST" type="Reject" press="onPressShowSettings" />
-						<Button id="_IDEGen_button1" text="Get E-Invoice Details" type="Reject" press="onPressShowSettings" />
-						<Button id="_IDEGen_button2" text="Delete" type="Reject" press="onPressShowSettings" />
-						<Button id="_IDEGen_button3" text="Cancel IRN" type="Reject" press="onPressShowSettings" />
-						<Button id="_IDEGen_button4" text="Display HTML" type="Reject" press="onPressShowSettings" />
-						<Button id="_IDEGen_button5" text="Download HTML" type="Reject" press="onPressShowSettings" />
+						<Button id="_IDEGen_button0" text="Send to GST" type="Default" press="onPressShowSettings" />
+						<Button id="_IDEGen_button1" text="Get E-Invoice Details" type="Default" press="onPressShowSettings" />
+						<Button id="_IDEGen_button2" text="Delete" type="Default" press="onPressShowSettings" />
+						<Button id="_IDEGen_button3" text="Cancel IRN" type="Default" press="onPressShowSettings" />
+						<Button id="_IDEGen_button4" text="Display HTML" type="Default" press="onPressShowSettings" />
+						<Button id="_IDEGen_button5" text="Download HTML" type="Default" press="onPressShowSettings" />
 						<!--<ToolbarSeparator id="_IDEGen_toolbarseparator0"/>-->
-						<!--<Button id="_IDEGen_button0" visible="false" icon="sap-icon://settings" type="Transparent" tooltip="Settings" press="onPressShowSettings"-->
+						<!--<Button id="_IDEGen_button0" visible="false" icon="sap-icon://settings" type="Default" tooltip="Settings" press="onPressShowSettings"-->
 						<!--	busyIndicatorDelay="0"/>-->
 					</OverflowToolbar>
 				</table:extension>

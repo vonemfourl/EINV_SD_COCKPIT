@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (BaseController, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("com.einv.sd.cockpit.controller.App", {
+	return BaseController.extend("com.einv.sd.process.controller.App", {
 
 		onInit: function () {
 
